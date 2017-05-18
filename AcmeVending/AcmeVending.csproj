@@ -168,22 +168,28 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\VendingMachineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CardProcessingModel.cs" />
-    <Compile Include="Models\VendingMachineModel.cs" />
+    <Compile Include="Models\VendableItemViewModel.cs" />
+    <Compile Include="Models\VendingMachineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Change.cs" />
+    <Compile Include="Repositories\DomainModels\Currency.cs" />
+    <Compile Include="Repositories\DomainModels\VendableItem.cs" />
     <Compile Include="Repositories\ICardProcessingRepository.cs" />
     <Compile Include="Repositories\IProductService.cs" />
     <Compile Include="Repositories\CardProcessingRepository.cs" />
-    <Compile Include="Repositories\ProductRepository.cs" />
+    <Compile Include="Repositories\ProductService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\keypad.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -211,6 +217,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\keypad.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -228,8 +235,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\VendingMachine.cshtml" />
     <Content Include="Views\Home\CardProcessing.cshtml" />
+    <Content Include="Views\VendingMachine\Index.cshtml" />
+    <Content Include="Views\VendingMachine\_VendingKeypad.cshtml" />
+    <Content Include="Views\VendingMachine\_VendableItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

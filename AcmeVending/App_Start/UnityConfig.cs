@@ -37,7 +37,7 @@ namespace AcmeVending.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IProductService, ProductService>();
             container.RegisterType<ICardProcessingRepository, CardProcessingRepository>();
         }
     }

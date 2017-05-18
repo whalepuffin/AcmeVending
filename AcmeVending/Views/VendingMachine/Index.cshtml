@@ -1,0 +1,21 @@
+﻿@model AcmeVending.Models.VendingMachineViewModel
+
+@{
+    ViewBag.Title = "Vending Machine";
+}
+
+<h2>Vending Machine</h2>
+
+@using (Html.BeginForm("VendSubmit", "VendingMachine", FormMethod.Post)) { 
+    @Html.AntiForgeryToken()
+    <div>
+        <div style="width: 300px; float:left;">
+            @Html.Partial("_VendableItems", Model.VendableItems)
+        </div>
+        <div style="width: 300px; float:left;">
+            @Html.Partial("_VendingKeypad")
+        </div>
+    </div>
+    <div style="clear: both;"> </div>
+    <button type="submit" class="btn btn-primary btn-large" style="width: 200px;">Vend!</button> 
+}

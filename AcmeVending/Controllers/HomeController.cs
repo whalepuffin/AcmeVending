@@ -6,17 +6,18 @@ using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Mvc;
 using AcmeVending.Repositories;
+using AcmeVending.Models;
 
 namespace AcmeVending.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductService _productService;
         private readonly ICardProcessingRepository _cardProcessingRepository;
 
-        public HomeController(IProductRepository productRepository, ICardProcessingRepository cardProcessingRepository)
+        public HomeController(IProductService productService, ICardProcessingRepository cardProcessingRepository)
         {
-            _productRepository = productRepository;
+            _productService = productService;
             _cardProcessingRepository = cardProcessingRepository;
         }
 
@@ -42,10 +43,10 @@ namespace AcmeVending.Controllers
         [HttpGet]
         public ActionResult VendingMachine()
         {
-            var firstValue = _productRepository.GetProductValue();
-            var model = new AcmeVending.Models.VendingMachineModel()
+            var firstValue = _productService.GetProductValue();
+            var model = new VendingMachineViewModel()
             {
-                Value = firstValue
+                CardNumber = firstValue
             };
             return View(model);
         }
@@ -54,7 +55,7 @@ namespace AcmeVending.Controllers
         public ActionResult CardProcessing()
         {
             bool isCardProcessed = _cardProcessingRepository.ProcessCard("1234567890123456");
-            var model = new AcmeVending.Models.CardProcessingModel()
+            var model = new CardProcessingModel()
             {
                 IsCardProcessed = isCardProcessed
             };

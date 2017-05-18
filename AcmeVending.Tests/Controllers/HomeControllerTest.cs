@@ -20,9 +20,9 @@ namespace AcmeVending.Tests.Controllers
         {
 
             // Arrange
-            var mockProductRepository = new Mock<IProductRepository>();
+            var mockProductService = new Mock<IProductService>();
             var mockCardProcessingRepository = new Mock<ICardProcessingRepository>();
-            HomeController controller = new HomeController(mockProductRepository.Object, mockCardProcessingRepository.Object);
+            HomeController controller = new HomeController(mockProductService.Object, mockCardProcessingRepository.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -35,9 +35,9 @@ namespace AcmeVending.Tests.Controllers
         public void About()
         {
             // Arrange
-            var mockProductRepository = new Mock<IProductRepository>();
+            var mockProductService = new Mock<IProductService>();
             var mockCardProcessingRepository = new Mock<ICardProcessingRepository>();
-            HomeController controller = new HomeController(mockProductRepository.Object, mockCardProcessingRepository.Object);
+            HomeController controller = new HomeController(mockProductService.Object, mockCardProcessingRepository.Object);
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -50,9 +50,9 @@ namespace AcmeVending.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            var mockProductRepository = new Mock<IProductRepository>();
+            var mockProductService = new Mock<IProductService>();
             var mockCardProcessingRepository = new Mock<ICardProcessingRepository>();
-            HomeController controller = new HomeController(mockProductRepository.Object, mockCardProcessingRepository.Object);
+            HomeController controller = new HomeController(mockProductService.Object, mockCardProcessingRepository.Object);
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
