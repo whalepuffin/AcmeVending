@@ -12,6 +12,8 @@ namespace AcmeVending.Models
         public List<VendableItemViewModel> VendableItems { get; set; }
         public bool IsProcessCardSuccessful { get; set; }
         public string ErrorMessage { get; set; }
+        public decimal CashInserted { get; set; }
+        public string ChangeDispensed { get; set; }
 
     } 
 }

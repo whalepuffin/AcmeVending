@@ -6,7 +6,7 @@
 
 <h2>Vending Machine</h2>
 
-@using (Html.BeginForm("VendSubmit", "VendingMachine", FormMethod.Post)) { 
+@using (Html.BeginForm("Index", "VendingMachine", FormMethod.Post)) { 
     @Html.AntiForgeryToken()
     <div>
         <div style="width: 300px; float:left;">
@@ -16,6 +16,31 @@
             @Html.Partial("_VendingKeypad")
         </div>
     </div>
-    <div style="clear: both;"> </div>
-    <button type="submit" class="btn btn-primary btn-large" style="width: 200px;">Vend!</button> 
+    <div style="clear: both;" />
+
+    <div>
+        <div style="float:left">
+            <button type="submit" class="btn btn-primary btn-large" style="width: 200px;">Vend</button>
+            <div style="color: red;">@Model.ErrorMessage</div>
+        </div>
+        <div style="float:left;">
+            @Html.TextBoxFor(m => m.CardNumber, new { placeholder = "Card Number", @style="300px" })
+        </div>
+        <div style="float:left;">
+            @Html.TextBoxFor(m => m.CashInserted, new { @style="width: 100px;", @class="form-control" })
+        </div>
+        <div class="btn-group" role="group" style="float:left">
+            <button type="button" class="btn btn-secondary" value="5.00">5</button>
+            <button type="button" class="btn btn-secondary" value="1.00">1</button>
+            <button type="button" class="btn btn-secondary" value="0.25">0.25</button>
+            <button type="button" class="btn btn-secondary" value="0.10">0.10</button>
+            <button type="button" class="btn btn-secondary" value="0.05">0.05</button>
+        </div>
+    </div>
+    <div style="clear: both;" />
+
+    <div>
+        <div>Change Dispensed</div>
+        <div>@Model.ChangeDispensed</div>
+    </div>
 }
