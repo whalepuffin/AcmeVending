@@ -88,9 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\VendingMachineControllerTests.cs" />
-    <Compile Include="ProductRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Repositories\CardProcessingRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

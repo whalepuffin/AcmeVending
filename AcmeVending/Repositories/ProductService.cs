@@ -14,12 +14,12 @@ namespace AcmeVending.Repositories
         {
             var availableCurrency = new List<Currency>
             {
-                new Currency{ Name = "five-dollar", Denomination=5.00m, Quantity=5 },
-                new Currency{ Name = "one-dollar", Denomination=1.00m, Quantity=5 },
-                new Currency{ Name = "quarter", Denomination=0.25m, Quantity=5 },
-                new Currency{ Name = "dime", Denomination=0.10m, Quantity=5 },
-                new Currency{ Name = "nickel", Denomination=0.05m, Quantity=5 }
-            };
+                new Currency { Name = "five-dollar", Denomination=5.00m, Quantity=5 },
+                new Currency { Name = "one-dollar", Denomination=1.00m, Quantity=5 },
+                new Currency { Name = "quarter", Denomination=0.25m, Quantity=5 },
+                new Currency { Name = "dime", Denomination=0.10m, Quantity=5 },
+                new Currency { Name = "nickel", Denomination=0.05m, Quantity=5 }
+            };               
 
             HttpContext.Current.Session[SessionConstants.AvailableCurrencySessionKey] = availableCurrency;
             return availableCurrency;
@@ -45,7 +45,6 @@ namespace AcmeVending.Repositories
 
         public List<Currency> CalculateChange(decimal cashInserted, decimal itemCost)
         {
-
             var changeRequired = cashInserted - itemCost;
 
             var changeToDispense = new List<Currency>();
@@ -87,8 +86,9 @@ namespace AcmeVending.Repositories
                 HttpContext.Current.Session[SessionConstants.AvailableCurrencySessionKey] = availableCurrency;
                 changeToDispense = currencyChange;
             }
-            catch (Exception)
+            catch 
             {
+                // I would rather not just catch and throw, it would be better to have this entire layer in a Web API in my opinion.
                 throw;
             }
 

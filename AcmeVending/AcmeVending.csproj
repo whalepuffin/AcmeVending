@@ -167,12 +167,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VendingMachineController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CardProcessingModel.cs" />
     <Compile Include="Models\VendableItemViewModel.cs" />
     <Compile Include="Models\VendingMachineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -232,10 +230,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\CardProcessing.cshtml" />
     <Content Include="Views\VendingMachine\Index.cshtml" />
     <Content Include="Views\VendingMachine\_VendingKeypad.cshtml" />
     <Content Include="Views\VendingMachine\_VendableItems.cshtml" />
