@@ -6,41 +6,64 @@
 
 <h2>Vending Machine</h2>
 
-@using (Html.BeginForm("Index", "VendingMachine", FormMethod.Post)) { 
-    @Html.AntiForgeryToken()
-    <div>
-        <div style="width: 300px; float:left;">
-            @Html.Partial("_VendableItems", Model.VendableItems)
+<div class="container">
+    @using (Html.BeginForm("Index", "VendingMachine", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <div style="width: 400px; float: left;">
+                @Html.Partial("_VendableItems", Model.VendableItems)
+            </div>
+            <div style="width: 400px; float: left;">
+                @Html.Partial("_VendingKeypad")
+            </div>
         </div>
-        <div style="width: 300px; float:left;">
-            @Html.Partial("_VendingKeypad")
-        </div>
-    </div>
-    <div style="clear: both;" />
+        <div style="clear: both;" />
+        <br />
 
-    <div>
-        <div style="float:left">
-            <button type="submit" class="btn btn-primary btn-large" style="width: 200px;">Vend</button>
-            <div style="color: red;">@Model.ErrorMessage</div>
-        </div>
-        <div style="float:left;">
-            @Html.TextBoxFor(m => m.CardNumber, new { placeholder = "Card Number", @style="300px" })
-        </div>
-        <div style="float:left;">
-            @Html.TextBoxFor(m => m.CashInserted, new { @style="width: 100px;", @class="form-control" })
-        </div>
-        <div class="btn-group" role="group" style="float:left">
-            <button type="button" class="btn btn-secondary" value="5.00">5</button>
-            <button type="button" class="btn btn-secondary" value="1.00">1</button>
-            <button type="button" class="btn btn-secondary" value="0.25">0.25</button>
-            <button type="button" class="btn btn-secondary" value="0.10">0.10</button>
-            <button type="button" class="btn btn-secondary" value="0.05">0.05</button>
-        </div>
-    </div>
-    <div style="clear: both;" />
+        <section>
+            <div>
+                <button type="submit" class="btn btn-primary btn-large" style="width: 200px;">Vend</button>
+                <div style="color: red;">@Model.ErrorMessage</div>
+                <div>Amount Paid: @Model.AmountPaid</div>
+            </div>
+        </section>
+        <br />
 
-    <div>
-        <div>Change Dispensed</div>
-        <div>@Model.ChangeDispensed</div>
-    </div>
-}
+        <section>
+            <div>
+                @Html.TextBoxFor(m => m.CardNumber, new { placeholder = "Card Number", @style = "300px" })
+            </div>
+        </section>
+        <br />
+
+        <section>
+            <div>
+                @Html.TextBoxFor(m => m.CashInserted, new { @style = "width: 100px;", @class = "form-control" })
+            </div>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" value="5.00">5</button>
+                <button type="button" class="btn btn-default" value="1.00">1</button>
+                <button type="button" class="btn btn-default" value="0.25">0.25</button>
+                <button type="button" class="btn btn-default" value="0.10">0.10</button>
+                <button type="button" class="btn btn-default" value="0.05">0.05</button>
+            </div>
+        </section>
+        <br />
+
+        <section>
+            <div>
+                <div>Change Dispensed</div>
+                <div>@Model.ChangeDispensed</div>
+            </div>
+        </section>
+
+        <br/>
+        <section>
+            <div>
+                <div>Available Change</div>
+                <div>@Model.AvailableChange</div>
+            </div>
+        </section>
+    }
+</div>

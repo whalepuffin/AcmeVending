@@ -5,8 +5,8 @@ namespace AcmeVending.Repositories
 {
     public interface IProductService
     {
-        void InitializeVendingMachine();
-        string GetProductValue();
-        List<Currency> CalculateChange(decimal changeRequired);
+        List<Currency> GetAvailableCurrency();
+        List<VendableItem> GetProducts();
+        List<Currency> CalculateChange(decimal changeRequired, decimal itemCost);
     }
 }

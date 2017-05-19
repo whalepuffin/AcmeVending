@@ -176,8 +176,8 @@
     <Compile Include="Models\VendableItemViewModel.cs" />
     <Compile Include="Models\VendingMachineViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Change.cs" />
     <Compile Include="Repositories\DomainModels\Currency.cs" />
+    <Compile Include="Repositories\DomainModels\SessionConstants.cs" />
     <Compile Include="Repositories\DomainModels\VendableItem.cs" />
     <Compile Include="Repositories\ICardProcessingRepository.cs" />
     <Compile Include="Repositories\IProductService.cs" />

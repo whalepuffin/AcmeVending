@@ -9,7 +9,7 @@ namespace AcmeVending.Repositories.DomainModels
     {
         public string Name { get; set; }
         public string ItemCode { get; set; }
-        public double Price { get; set; }
-        public bool IsAvailable { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
     }
 }

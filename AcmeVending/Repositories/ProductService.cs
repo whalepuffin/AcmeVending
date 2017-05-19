@@ -10,12 +10,9 @@ namespace AcmeVending.Repositories
 {
     public class ProductService : IProductService
     {
-
-        public void InitializeVendingMachine()
+        public List<Currency> GetAvailableCurrency()
         {
-            HttpContext.Current.Session["VendingMachineState_Products"] = "";
-
-            var availableCurrency = new List<Currency>()
+            var availableCurrency = new List<Currency>
             {
                 new Currency{ Name = "five-dollar", Denomination=5.00m, Quantity=5 },
                 new Currency{ Name = "one-dollar", Denomination=1.00m, Quantity=5 },
@@ -23,21 +20,42 @@ namespace AcmeVending.Repositories
                 new Currency{ Name = "dime", Denomination=0.10m, Quantity=5 },
                 new Currency{ Name = "nickel", Denomination=0.05m, Quantity=5 }
             };
-            HttpContext.Current.Session["VendingMachineState_AvailableCurrency"] = availableCurrency;
+
+            HttpContext.Current.Session[SessionConstants.AvailableCurrencySessionKey] = availableCurrency;
+            return availableCurrency;
         }
 
-        public string GetProductValue()
+        public List<VendableItem> GetProducts()
         {
-
-            return string.Empty;
+            List<VendableItem> vendableItems = new List<VendableItem>
+            {
+                new VendableItem { Name = "Snickers", ItemCode = "123", Price = Decimal.Parse("2.25"), Quantity = 5 },
+                new VendableItem { Name = "Skittles", ItemCode = "411", Price = Decimal.Parse("0.65"), Quantity = 5 },
+                new VendableItem { Name = "Pop Tarts", ItemCode = "766", Price = Decimal.Parse("0.90"), Quantity = 5 },
+                new VendableItem { Name = "Gum | Mint", ItemCode = "098", Price = Decimal.Parse("0.85"), Quantity = 5 },
+                new VendableItem { Name = "Potato Chips", ItemCode = "232", Price = Decimal.Parse("1.50"), Quantity = 5 },
+                new VendableItem { Name = "Cookies", ItemCode = "433", Price = Decimal.Parse("1.25"), Quantity = 5 },
+                new VendableItem { Name = "Trail mix", ItemCode = "655", Price = Decimal.Parse("4.25"), Quantity = 5 },
+                new VendableItem { Name = "Doritos", ItemCode = "133", Price = Decimal.Parse("0.35"), Quantity = 5 },
+                new VendableItem { Name = "Trail mix", ItemCode = "712", Price = Decimal.Parse("2.65"), Quantity = 5 },
+                new VendableItem { Name = "Trail mix", ItemCode = "944", Price = Decimal.Parse("1.25"), Quantity = 5 }
+            };
+            return vendableItems;
         }
 
-        public List<Currency> CalculateChange(decimal changeRequired)
+        public List<Currency> CalculateChange(decimal cashInserted, decimal itemCost)
         {
+
+            var changeRequired = cashInserted - itemCost;
+
             var changeToDispense = new List<Currency>();
             try
             {
-                var availableCurrency = HttpContext.Current.Session["VendingMachineState_AvailableCurrency"] as List<Currency>;
+                var availableCurrency = HttpContext.Current.Session[SessionConstants.AvailableCurrencySessionKey] as List<Currency>;
+                if (availableCurrency == null || availableCurrency.Count == 0)
+                {
+                    availableCurrency = GetAvailableCurrency();
+                }
 
                 var currencyChange = new List<Currency>()
                 {
@@ -66,7 +84,7 @@ namespace AcmeVending.Repositories
                     currency.Quantity = newQuantity;
                 }
 
-                HttpContext.Current.Session["VendingMachineState_AvailableCurrency"] = availableCurrency;
+                HttpContext.Current.Session[SessionConstants.AvailableCurrencySessionKey] = availableCurrency;
                 changeToDispense = currencyChange;
             }
             catch (Exception)

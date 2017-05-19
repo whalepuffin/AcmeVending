@@ -41,17 +41,6 @@ namespace AcmeVending.Controllers
         }
 
         [HttpGet]
-        public ActionResult VendingMachine()
-        {
-            var firstValue = _productService.GetProductValue();
-            var model = new VendingMachineViewModel()
-            {
-                CardNumber = firstValue
-            };
-            return View(model);
-        }
-
-        [HttpGet]
         public ActionResult CardProcessing()
         {
             bool isCardProcessed = _cardProcessingRepository.ProcessCard("1234567890123456");

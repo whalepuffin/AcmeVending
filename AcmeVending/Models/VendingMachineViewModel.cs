@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace AcmeVending.Models
 {
@@ -14,6 +11,7 @@ namespace AcmeVending.Models
         public string ErrorMessage { get; set; }
         public decimal CashInserted { get; set; }
         public string ChangeDispensed { get; set; }
-
+        public string AvailableChange { get; set; }
+        public string AmountPaid { get; set; }
     } 
 }
